@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./reusable/head.ejs') %>
+    <title>Perfil - <%= userProfile.displayName %></title>
+    <link rel="stylesheet" href="../public/css/perfil.css">
+</head>
+<body data-isMy="<%= userProfile.isMyProfile %>">
+    <div id="body-containner">
+        <%- include('./reusable/reload.ejs') %>
+        <div id="containner">
+            <%- include('./reusable/header.ejs',{banda:user.banda, index:null,perfil:{nome:user.displayName,profileImg:user.profilePic == null ? "https://res.cloudinary.com/dgcnfudya/image/upload/v1689452893/j4tfvjlyp1ssspbefzg9.png" : user.profilePic} }) %>
+            
+            <div id="folow-info-popup-containner" style="display: none;" >
+                <div id="close-popup-out"></div>
+                <div id="folow-info-popup-content">
+                    <div data-page-seguindo="1"  id="seguindo-popup">
+                        <div class="folow-info-title-containner">
+                            <h1 class="folow-info-title">Seguindo</h1>
+                            <div class="close-popup">
+                                <img src="../public/assets/svg/close_g0xorss70bu5.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="linha"></div>
+                        <div class="folow-info-row">
+                            
+                        </div>
+                     </div> 
+                    <div data-page-seguidores="1" style="display: none;" id="seguidores-popup">
+                        <div class="folow-info-title-containner">
+                            <h1 class="folow-info-title">Seguidores</h1>
+                            <div class="close-popup">
+                                <img src="../public/assets/svg/close_g0xorss70bu5.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="linha"></div>
+                        <div class="folow-info-row">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if (userProfile.isMyProfile == true) { %> 
+                <div id="edit-profile-popup-containner" style="display: none;" class="flex-center">
+                    <div id="close-popup-out-edit"></div>
+                    <div id="edit-profile-popup">
+                        <div id="top-edit-containner">
+                            <h1 id="edit-profile-title">Editar Perfil</h1>
+                            <div id="close-edit">
+                                <img src="../public/assets/svg/close_g0xorss70bu5.svg">
+                            </div>
+                        </div>
+                        <div id="edit-profile-content">
+                            <div id="edit-profile-photo">
+                                <img id="imgDisplayUser" src="<%= userProfile.profilePic %>">
+                                <div id="edit-photo">
+                                    <input type="file" accept="image/*" name="profileImg" id="inputFile-profileImg">
+                                </div>
+                            </div>
+                            <div id="edit-profile-displayName">
+                                
+                                <label id="input-displayName-label" for="input-displayName">Username</label>
+                                <input name="displayName" value="<%= userProfile.displayName %>" placeholder="Username" id="input-displayName" type="text">
+                                <div id="button-save-containner">
+                                    <input id="save-edit" type="submit" value="Salvar">
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div id="edit-desc">
+                            <span id="desc-infos-span">Ao continuar, você autoriza o SounifyMe a acessar a imagem enviada. Certifique-se de que você tem o direito de fazer o upload dessa imagem.</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="edit-banner-containner">
+                    <div id="close-popup-banner-edit"></div>
+                    <div id="edit-banner-content">
+                        <div id="top-banner-edit">
+                            <h1 id="title-popup-banner">Escolha o Estilo</h1>
+                            <img id="close-popup-banner" src="../public/assets/svg/close_g0xorss70bu5.svg" alt="">
+                        </div>
+                        <div id="circle-banner-containner">
+                            <div id="edit-banner-img">
+                                <input type="file" hidden name="profileBannerImg" id="profile-banner-input-img">
+                                <div id="circle-img" class="circle-containner flex-center">
+                                    <img src="../public/assets/svg/icons8-adicionar-imagem-48 (1).png">
+                                </div>
+                                <label class="title-circle-banner">Enviar Imagem</label>
+                            </div>
+                            <div id="edit-banner-color">
+                                <div id="circle-color" data-bannerColor="<%= userProfile.banner.type == 'color' ? userProfile.banner.content : "" %>" class="circle-containner flex-center">
+                                    <img src="../public/assets/svg/icons8-conta-gotas-24.png">
+                                </div>
+                                <label class="title-circle-banner">Enviar Cor</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="edit-banner-color-containner" class="flex-containner">
+                    <div id="close-popup-banner-edit-color" class="flex-containner"></div>
+                    <div id="edit-banner-color-content">
+                        <div id="preview-color"><input type="color" style="opacity: 0;" name="profileBannerColor" id="profile-banner-input-color"></div>
+                        <div id="button-containner">
+                            <button id="save-color-banner">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <main id="main-containner">
+               <div id="main-content">
+                    <div id="perfil-continner">
+                        <div id="banner-continner" data-type="<%= userProfile.banner.type %>">
+                            <% if (userProfile.banner.type == 'color') { %>
+                                <div id="banner-color" data-color="<%= userProfile.banner.content %>">
+                                    <% if (userProfile.isMyProfile == true) { %> 
+                                        <div class="banner-profile-class"></div>
+                                    <% } %>
+                                </div>
+                            <% }else{ %>
+                                <div id="banner-img">
+                                    <% if (userProfile.isMyProfile == true) { %> 
+                                        <div class="banner-profile-class"></div>
+                                    <% } %>
+                                    <img src="<%= userProfile.banner.content %>">
+                                </div>
+                            <% } %>
+                        </div>
+                        <div id="user-containner">
+                            <div id="profile-pic" class="flex-center">
+                                <img id="profile-pic-img" src="<%= userProfile.profilePic %>">
+                            </div>
+                            <div id="user-info-containner">
+                                <div id="user-info-content" >
+                                    <div id="displayName-containner">
+                                        <span id="displayName-profile" title="<%= userProfile.displayName%>"><%= userProfile.displayName%></span>
+                                    </div>
+                                    <div id="user-info-other" class="flex-center"> 
+                                        <span id="playlist"><span class="number-info"><%= userProfile.playlist.length %></span><br> Playlists</span>
+                                        <span id="seguidores"><span class="number-info"><%= userProfile.folowInfo.seguidores.length %></span><br> Seguidores</span>
+                                        <span id="seguindo"><span class="number-info"><%= userProfile.folowInfo.seguindo.length %></span><br> Seguindo</span>
+                                    </div>
+                                </div>
+                                <div id="profile-button-containner">
+                                    <% if (userProfile.isMyProfile == false) { %> 
+                                        <% if (user.blockedUsers.includes(userProfile.uid) == true) { %>
+                                            <div id="desblock-Button">
+                                                <button id="desblock">Desbloquear</button>
+                                            </div>
+                                        <% }else{ %>
+                                            <div id="folow-button">
+                                                <button data-folow="<%= userProfile.isFolow %>" class="profile-button <%=  userProfile.isFolow == true ? "seguindo" : "" %>" id="button-seguir"></button>
+                                            </div>
+                                        <% } %>
+                                        
+                                         
+                                            <div id="profile-options">
+                                                <div id="options-folow-user-containner">
+                                                    <div id="close-options-folow-user"></div>
+                                                    <div id="options-folow-user-content">
+                                                        <ul id="options-folow-user-containner-list">
+                                                            <% if (userProfile.friends.includes(user.uid)) { %>
+                                                                <li id="RemoverUser" class="optinosUser-containner-list-item"><svg id="vector-layer" viewBox="0 0 1324 931"><g transform="matrix(0.09187, 0, 0, -0.09187, 9.625427, 487.643097)" fill="#000000" stroke="none" style=""><path d="M2370 5105 c-407 -57 -759 -292 -979 -654 -154 -254 -220 -581 -175 -878 50 -342 219 -644 479 -860 45 -37 48 -42 30 -49 -178 -62 -397 -167 -548 -262 -149 -93 -273 -191 -415 -328 -353 -338 -598 -757 -724 -1238 -26 -100 -32 -140 -32 -231 0 -95 4 -121 28 -190 65 -187 203 -324 391 -387 l70 -23 1321 0 1320 0 41 27 c62 41 88 90 88 168 0 78 -26 127 -88 168 l-41 27 -1295 5 c-1195 5 -1298 6 -1327 22 -65 35 -114 115 -114 186 0 35 47 214 86 327 70 202 214 461 353 635 133 166 330 345 511 464 356 234 720 349 1150 363 333 11 628 -47 974 -192 71 -30 98 -36 132 -32 127 14 212 140 173 258 -28 83 -86 122 -294 199 -49 19 -94 37 -98 40 -4 4 18 28 50 54 32 27 91 84 131 129 484 535 463 1356 -48 1867 -303 303 -726 444 -1150 385z m373 -406 c193 -39 354 -125 493 -263 139 -140 224 -299 264 -496 74 -359 -88 -759 -392 -968 -281 -193 -648 -223 -954 -78 -112 53 -165 89 -249 168 -239 223 -350 565 -285 878 40 197 125 356 264 496 230 229 548 327 859 263z"></path><path d="M 4018.353 2114.967 C 3971.689 2102.203 3906.357 2036.42 3892.876 1991.256 C 3885.618 1968.674 3881.469 1840.054 3881.469 1672.161 L 3881.469 1390.375 L 3562.075 1387.429 L 3241.643 1384.484 L 3200.162 1357.975 C 3135.869 1317.719 3108.907 1269.61 3108.907 1193.027 C 3108.907 1116.444 3135.869 1068.334 3200.162 1028.08 L 3241.643 1001.57 L 3561.039 998.625 L 3880.433 995.679 L 3883.544 694.256 C 3886.655 396.764 3886.655 392.837 3911.543 355.528 C 3925.023 334.909 3955.097 306.436 3977.911 291.709 C 4013.169 269.126 4031.834 265.199 4088.869 265.199 C 4145.903 265.199 4164.57 269.126 4199.827 291.709 C 4222.641 306.436 4252.714 334.909 4266.195 355.528 C 4291.083 392.837 4291.083 396.764 4294.194 694.256 L 4297.305 995.679 L 4615.663 998.625 C 4929.873 1001.57 4934.021 1001.57 4973.427 1025.134 C 4995.204 1037.899 5025.277 1066.372 5040.832 1087.971 C 5064.682 1121.353 5068.831 1139.026 5068.831 1193.027 C 5068.831 1247.028 5064.682 1264.702 5040.832 1298.083 C 5025.277 1319.683 4995.204 1348.157 4973.427 1360.919 C 4934.021 1384.484 4929.873 1384.484 4615.663 1387.429 L 4297.305 1390.375 L 4294.194 1691.797 C 4291.083 1989.292 4291.083 1993.219 4266.195 2030.529 C 4217.456 2105.149 4109.61 2141.476 4018.353 2114.967 Z" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.687356, -0.72632, 0.72632, 0.687356, -0.000212, -0.000138)"></path></g></svg><div id="space"></div> Desfazer Amizade</li>
+                                                             
+                                                            <% }else{ %>
+                                                                <li id="AdicionarUser" class="optinosUser-containner-list-item"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"><path d="M2370 5105 c-407 -57 -759 -292 -979 -654 -154 -254 -220 -581 -175 -878 50 -342 219 -644 479 -860 45 -37 48 -42 30 -49 -178 -62 -397 -167 -548 -262 -149 -93 -273 -191 -415 -328 -353 -338 -598 -757 -724 -1238 -26 -100 -32 -140 -32 -231 0 -95 4 -121 28 -190 65 -187 203 -324 391 -387 l70 -23 1321 0 1320 0 41 27 c62 41 88 90 88 168 0 78 -26 127 -88 168 l-41 27 -1295 5 c-1195 5 -1298 6 -1327 22 -65 35 -114 115 -114 186 0 35 47 214 86 327 70 202 214 461 353 635 133 166 330 345 511 464 356 234 720 349 1150 363 333 11 628 -47 974 -192 71 -30 98 -36 132 -32 127 14 212 140 173 258 -28 83 -86 122 -294 199 -49 19 -94 37 -98 40 -4 4 18 28 50 54 32 27 91 84 131 129 484 535 463 1356 -48 1867 -303 303 -726 444 -1150 385z m373 -406 c193 -39 354 -125 493 -263 139 -140 224 -299 264 -496 74 -359 -88 -759 -392 -968 -281 -193 -648 -223 -954 -78 -112 53 -165 89 -249 168 -239 223 -350 565 -285 878 40 197 125 356 264 496 230 229 548 327 859 263z"/><path d="M4102 1889 c-45 -13 -108 -80 -121 -126 -7 -23 -11 -154 -11 -325 l0-287 -308 -3 -309 -3 -40 -27 c-62 -41 -88 -90 -88 -168 0 -78 26 -127 88 -168 l40 -27 308 -3 308 -3 3 -307 c3 -303 3 -307 27 -345 13 -21 42 -50 64-65 34 -23 52 -27 107 -27 55 0 73 4 107 27 22 15 51 44 64 65 24 38 24 42 27 345 l3 307 307 3 c303 3 307 3 345 27 21 13 50 42 65 64 23 34 27 52 27 107 0 55 -4 73 -27 107 -15 22 -44 51 -65 64 -38 24 -42 24 -345 27 l-307 3 -3 307 c-3 303 -3 307 -27 345 -47 76 -151 113 -239 86z"/></g></svg> Adicionar Amigo</li>
+                                                            <% } %>
+                                                            <li id="bloquearUser" class="optinosUser-containner-list-item blok"><svg class="optionsUser-containner-list-item-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 468.293 468.293" style="enable-background:new 0 0 468.293 468.293;" xml:space="preserve"><path style="fill:#D15241;" d="M234.146,0C104.898,0,0,104.898,0,234.146s104.898,234.146,234.146,234.146 s234.146-104.898,234.146-234.146S363.395,0,234.146,0z M66.185,234.146c0-93.034,75.551-168.585,167.961-168.585 c34.966,0,68.059,10.615,94.907,29.346L95.532,329.054C76.8,302.205,66.185,269.112,66.185,234.146z M234.146,402.107 c-34.966,0-68.059-10.615-94.907-29.346l233.522-233.522c18.732,26.849,29.346,59.941,29.346,94.907 C402.107,327.18,327.18,402.107,234.146,402.107z"></path></svg> Bloquear</li>
+                                                            <li id="denunciarUser" class="optinosUser-containner-list-item"><svg class="optionsUser-containner-list-item-svg" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.000000 32.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"><path d="M183 294 c-23 -23 -25 -30 -18 -82 4 -31 8 -58 8 -58 1 -1 26 2 56 6 39 5 60 13 73 30 63 78 -47 175 -119 104z m97 -14 c41 -41 9 -100 -55 -100 -19 0 -35 4 -35 9 0 5 -3 22 -6 39 -12 58 54 94 96 52z"/><path d="M230 255 c0 -14 5 -25 10 -25 6 0 10 11 10 25 0 14 -4 25 -10 25 -5 0 -10 -11 -10 -25z"/><path d="M230 210 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0-10 -4 -10 -10z"/><path d="M40 210 c-22 -22 -25 -42 -10 -70 8 -15 6 -24 -10 -40 -20 -20 -27 -50 -12 -50 5 0 14 11 20 25 21 45 92 42 107 -5 3 -11 11 -20 16 -20 16 0 10 29 -11 50 -16 16 -18 25 -10 40 5 10 10 26 10 34 0 22 -36 56 -60 56 -11 0 -29 -9 -40 -20z m70 -15 c15 -18 10 -45 -12 -59 -35 -22 -74 27 -48 59 16 19 44 19 60 0z"/></g></svg> Denunciar</li>
+                                                            <li id="pararDeSeguir" class="optinosUser-containner-list-item" style="white-space: nowrap; text-align: center; color: rgb(255, 0, 0); font: 500 1em 'inter',sans-serif;">Parar de seguir</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div id="profile-options-svg">
+                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" data-name="Layer 2"><path fill='#FFF' d="m16 1a4 4 0 1 0 4 4 4 4 0 0 0 -4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1 -2 2z"></path><path fill='#FFF' d="m16 12a4 4 0 1 0 4 4 4 4 0 0 0 -4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1 -2 2z"></path><path fill='#FFF' d="m16 23a4 4 0 1 0 4 4 4 4 0 0 0 -4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1 -2 2z"></path></g></svg>
+                                                </div>
+                                            </div>
+                                       
+                                     <% }else{ %> 
+                                        <div id="edit-button">
+                                            <button id="button-editar">Editar Perfil</button>
+                                        </div>
+                                     <% } %> 
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% if (user.blockedUsers.includes(userProfile.uid) == false) { %>
+                        <div id="library-containnner">
+                            <div id="library-content">  
+                                <div id="library-row-containnner">
+                                    <div class="library-row">
+                                        <div class="library-row-title">
+                                            <h1 class="h1-title">Playlists</h1>
+                                        </div>
+                                        <div class="library-col-containner">
+                                            <div class="library-col">
+                                                <div class="library-col-img-containner">
+                                                    <img src="https://res.cloudinary.com/dgcnfudya/image/upload/v1690939381/isjslkzdlkswe9pcnrn4.jpg" alt="" class="library-col-img">
+                                                </div>
+                                                <div class="library-col-desc-containner">
+                                                    <div class="library-col-desc-title">
+                                                        <p class="p-desc-title">PlaylistTeste</p>
+                                                    </div>
+                                                    <div class="library-col-desc-music-number">
+                                                        <p class="p-desc-music-number">10 Musicas</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+               </div>
+            </main>
+        </div>
+    </div>
+    <%- include('./reusable/script.ejs') %>
+    <script src="../public/js/perfil.js"></script>
+</body>
+</html>

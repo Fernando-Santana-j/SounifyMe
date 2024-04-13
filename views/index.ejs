@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./reusable/head.ejs') %>
+    <title>SounifyMe</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    <div id="body-containner">
+        <%- include('./reusable/reload.ejs') %>
+
+        <div id="containner">
+            <%- include('./reusable/header.ejs',{banda:user.banda, index:0,perfil:{nome:user.displayName,profileImg:user.profilePic == null ? "https://res.cloudinary.com/dgcnfudya/image/upload/v1689452893/j4tfvjlyp1ssspbefzg9.png" : user.profilePic} }) %>
+            <%- include('./reusable/userOptions.ejs') %>
+            <main id="main-containner" >
+               <div id="main-content">
+                
+               </div>
+            </main>
+        </div>
+    </div>
+    
+    
+    <%- include('./reusable/script.ejs') %>
+</form>
+</body>
+</html>

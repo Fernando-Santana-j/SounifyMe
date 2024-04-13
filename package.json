@@ -1,0 +1,39 @@
+{
+  "name": "sounifyme",
+  "version": "1.0.0",
+  "description": "Um aplicativo de musica aonde e possivel se reunir com pessoas para escutar juntas",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm i && node index.js",
+    "build": "npm install",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "author": "Fernando Santana",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^1.37.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "file-system": "^1.2.2",
+    "firebase": "^10.4.0",
+    "firebase-admin": "^11.10.1",
+    "multer": "^1.4.5-lts.1",
+    "npm": "^10.1.0",
+    "socket.io": "^4.6.1",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  }
+}

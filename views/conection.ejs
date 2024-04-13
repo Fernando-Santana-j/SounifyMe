@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./reusable/head.ejs') %>
+    <title>SounifyMe - Conectar-Se</title>
+    <link rel="stylesheet" href="../public/css/conection.css">
+    <script src="../public/js/createRoom.js"></script>
+</head>
+<body>
+    <div id="body-containner">
+        <%- include('./reusable/reload.ejs') %>
+        <%- include('./createRoom.ejs') %>
+        <div id="containner">
+            <%- include('./reusable/header.ejs',{banda:user.banda, index:2,perfil:{nome:user.displayName,profileImg:user.profilePic == null ? "https://res.cloudinary.com/dgcnfudya/image/upload/v1689452893/j4tfvjlyp1ssspbefzg9.png" : user.profilePic} }) %>
+
+            <main id="main-containner">
+                <div id="main-content">
+                    <div id="top-title-containner">
+                        <div id="top-title-content">
+                            <h1>Escolha um servidor e se conecte para conhecer novas pessoas, ou crie o seu próprio e convide seus amigos!</h1>
+                        </div>
+                    </div>
+
+                    <div id="server-list-containner">
+                        <div id="server-list-content">
+                            <div id="server-list-left-content" style="width: 100%;">
+                                <div id="server-list-left-search-containner">
+                                    <div id="server-list-left-search-content">
+                                        <input type="text" placeholder="Pesquise um servidor, musicas, estilos musicais ou artistas." name="servidor" id="find-room-input">
+                                        <div id="find-room-icon">
+                                            <svg id="find-room-icon-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 463.001 463.001" style="enable-background:new 0 0 463.001 463.001;" xml:space="preserve"><g><path d="M303.501,0c-87.948,0-159.5,71.551-159.5,159.5c0,36.188,12.122,69.593,32.507,96.386l-32.311,32.311 c-0.205,0.205-0.392,0.421-0.569,0.643c-2.645-0.551-5.363-0.84-8.127-0.84c-10.55,0-20.47,4.109-27.933,11.572l-95.999,95.999 C4.108,403.03,0,412.949,0,423.5s4.108,20.471,11.568,27.928C19.031,458.891,28.951,463,39.501,463s20.47-4.109,27.933-11.572 l95.999-95.999c7.461-7.458,11.569-17.377,11.569-27.929c0-2.765-0.289-5.484-0.84-8.129c0.222-0.176,0.437-0.363,0.642-0.568 l32.31-32.31C233.908,306.879,267.313,319,303.501,319c87.948,0,159.5-71.551,159.5-159.5S391.449,0,303.501,0z M56.826,440.822 C52.197,445.451,46.045,448,39.501,448s-12.696-2.549-17.326-7.179C17.548,436.196,15,430.045,15,423.5s2.548-12.696,7.176-17.322 l86.698-86.698l34.647,34.647L56.826,440.822z M154.075,343.468l-34.528-34.528c4.575-3.936,10.258-5.926,15.954-5.926 c6.274,0,12.55,2.389,17.326,7.166c4.627,4.625,7.175,10.776,7.175,17.321C160.002,333.427,157.906,339.027,154.075,343.468z M167.73,304.665c-1.278-1.796-2.706-3.503-4.296-5.092c-1.592-1.591-3.301-3.02-5.098-4.299l27.841-27.841 c3,3.259,6.134,6.393,9.393,9.393L167.73,304.665z M303.501,304c-79.678,0-144.5-64.822-144.5-144.5S223.823,15,303.501,15 s144.5,64.822,144.5,144.5S383.179,304,303.501,304z"></path><path d="M303.501,32c-70.304,0-127.5,57.196-127.5,127.5S233.197,287,303.501,287s127.5-57.196,127.5-127.5S373.805,32,303.501,32z M303.501,272c-62.032,0-112.5-50.467-112.5-112.5S241.469,47,303.501,47s112.5,50.467,112.5,112.5S365.533,272,303.501,272z"></path><path d="M355.58,79.438c-3.47-2.262-8.116-1.283-10.378,2.188c-2.262,3.47-1.282,8.117,2.188,10.378 c22.924,14.94,36.61,40.172,36.61,67.496c0,18.667-6.534,36.86-18.399,51.226c-2.638,3.193-2.187,7.921,1.007,10.559 c1.398,1.155,3.09,1.717,4.772,1.717c2.16,0,4.304-0.929,5.787-2.724c14.079-17.047,21.833-38.632,21.833-60.777 C399.001,127.087,382.769,97.158,355.58,79.438z"></path><path d="M320.856,65.575C315.168,64.53,309.329,64,303.501,64c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5 c4.922,0,9.849,0.447,14.645,1.328c0.459,0.084,0.914,0.125,1.364,0.125c3.549,0,6.703-2.531,7.368-6.146 C327.626,70.233,324.93,66.324,320.856,65.575z"></path></g></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="server-list">
+                                    <div id="server-list-row-containner">
+                                        <div id="server-list-row">
+                                            <% rooms.forEach((element,index) => { %>
+                                                
+                                                <div class="server-list-col" data-index="<%= index %>" data-roomId="<%= element.roomId %>">
+                                                    <div class="server-list-col-img-text-containner">
+                                                        <div class="server-list-img">
+                                                            <img src="<%= element.roomPic %>">
+                                                        </div>
+                                                        <div class="server-list-texts">
+                                                            <div class="server-list-name">
+                                                                <h1 class="server-list-name-h1"><%= element.roomName %></h1>
+                                                            </div>
+                                                            <div class="server-list-musicAc">
+                                                                <span class="server-list-musicAc-span">Tocando:<p class="server-list-musicAc-p" title="<%= element.musicaAtual == null || element.musicaAtual == undefined ? '' : element.musicaAtual.musica  %>"><%= element.musicaAtual == null || element.musicaAtual == undefined ? '' : element.musicaAtual.musica %></p></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="server-list-style-containner" title="<%= element.estilos %>">
+                                                        <h1 class="server-list-style-title">Estilo Musical</h1>
+                                                        <p class="server-list-style-p"><%= element.estilos %></p>
+                                                    </div>
+                                                    <div class="server-list-status">
+                                                        <div class="number-people-containner">
+                                                            <p class="number-people-p"><%= element.pessoas.length %> / <%= element.maxpessoas %></p>
+                                                        </div>
+                                                        <div class="islocked-containner">
+                                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 65.469 65.469" style="enable-background:new 0 0 65.469 65.469;" xml:space="preserve"><g><path d="M50.504,23.929h-0.603v-6.762C49.902,7.701,42.202,0,32.736,0S15.569,7.701,15.569,17.167v6.762h-0.604 c-5.401,0-9.796,4.395-9.796,9.797v21.946c0,5.402,4.395,9.797,9.796,9.797h35.54c5.401,0,9.796-4.395,9.796-9.797V33.726 C60.3,28.324,55.905,23.929,50.504,23.929z M21.569,17.167C21.569,11.01,26.577,6,32.736,6c6.157,0,11.166,5.009,11.166,11.167 v6.762H21.569V17.167z M54.3,55.673c0,2.094-1.703,3.797-3.796,3.797H14.965c-2.093,0-3.796-1.703-3.796-3.797V33.726 c0-2.094,1.703-3.797,3.796-3.797h35.54c2.093,0,3.796,1.703,3.796,3.797L54.3,55.673L54.3,55.673z"></path><path d="M32.734,37.163c-3.321,0-6.014,2.692-6.014,6.014c0,2.227,1.214,4.167,3.014,5.207v6.686h6v-6.686 c1.8-1.04,3.014-2.98,3.014-5.207C38.748,39.855,36.055,37.163,32.734,37.163z"></path></g></svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="enter-room" data-roomId="<%= element.roomId %>">
+                                                        <svg viewBox="-27 0 448 448" xmlns="http://www.w3.org/2000/svg"><path d="m341.332031 448h-224v-138.667969h21.335938v117.335938h202.664062c17.601563 0 32-14.402344 32-32v-341.335938c0-17.597656-14.398437-32-32-32h-202.664062v117.335938h-21.335938v-138.667969h224c29.46875 0 53.335938 23.867188 53.335938 53.332031v341.335938c0 29.464843-23.867188 53.332031-53.335938 53.332031zm0 0"></path><path d="m203.867188 312.535156-15.066407-15.070312 73.464844-73.464844-73.464844-73.464844 15.066407-15.070312 88.53125 88.535156zm0 0"></path><path d="m0 213.332031h277.332031v21.335938h-277.332031zm0 0"></path></svg>
+                                                    </div>
+                                                </div>
+                                                <div class="linha"></div>
+                                            <% }) %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="direct-connection-popup-containner" style="display: none;">
+                                    <div id="direct-connection-popup-close"></div>
+                                    <div id="direct-connection-popup-content">
+                                        <div id="direct-connection-top">
+                                            <div id="close-popup-button-direct">
+                                                <img src="../public/assets/svg/close_g0xorss70bu5.svg" alt="">
+                                            </div>
+                                            <h1 id="direct-connection-h1">Insira o codigo para acessar a sala</h1>
+                                           
+                                        </div>
+                                        <input type="text" id="direct-connection-input" placeholder="Insira o codigo">
+                                        <button id="direct-connection-button">Entrar</button>
+                                    </div>
+                                </div>
+                                <div id="server-list-buttons-containner">
+                                    <div id="server-list-buttons">
+                                        <input class="server-list-buttons-class" id="direct-button" type="button" value="Conexão Direta">
+                                        <input class="server-list-buttons-class" id="create-room-button" type="button" value="Criar Sala">
+                                        <input class="server-list-buttons-class" id="random-room-button" type="button" value="Aleatório">
+                                        <input class="server-list-buttons-class" id="refresh-button" type="button" value="Atualizar Lista">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div id="server-list-right-containner" >
+                                <!-- <div id="server-list-right-content">
+                                    <div id="server-list-right-top-infos">
+                                        <div id="room-right-pic">
+                                            <img id="room-right-pic-img" src="https://res.cloudinary.com/dgcnfudya/image/upload/v1689452893/j4tfvjlyp1ssspbefzg9.png" >
+                                        </div>
+                                        <div id="room-right-title">
+                                            <h1 id="room-right-title-h1">Servidor Teste</h1>
+                                        </div>
+                                    </div>
+                                    <div class="linha"></div>
+                                    <div id="server-list-right-music-infos">
+                                        <h1 id="room-right-tocando">Tocando</h1>
+                                        <div id="room-right-music-pic">
+                                            <img id="room-right-music-pic-img" src="https://res.cloudinary.com/dgcnfudya/image/upload/v1690939381/isjslkzdlkswe9pcnrn4.jpg">
+                                        </div>
+                                        <div id="room-right-music-name">
+                                            <h1 id="room-right-music-name-h1">Nome da Musica</h1>
+                                        </div>
+                                        <div id="room-right-music-banda">
+                                            <p id="room-right-music-banda-p">Nome da Banda</p>
+                                        </div>
+                                    </div>
+                                    <div class="linha"></div>
+                                    <div id="server-list-right-others-infos">
+                                        <div id="server-list-right-others-infos-islocked">
+                                            <h1 id="server-list-right-others-infos-islocked-h1">Sem Senha</h1>
+                                        </div>
+                                        <div id="server-list-right-others-infos-estilos">
+                                            <h1 id="server-list-right-others-infos-estilos-h1">Rock,indie</h1>
+                                        </div>
+                                        <div id="server-list-right-others-infos-pessoas">
+                                            <h1 id="server-list-right-others-infos-pessoas-h1">6 pessoas de 10</h1>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="linha"></div>
+                                    <div id="server-list-right-button-containner">
+                                        <div id="server-list-right-button-content">
+                                            <span id="server-list-right-button-span">Entrar</span>
+                                            <svg id="server-list-right-button-svg" viewBox="-27 0 448 448" xmlns="http://www.w3.org/2000/svg"><path d="m341.332031 448h-224v-138.667969h21.335938v117.335938h202.664062c17.601563 0 32-14.402344 32-32v-341.335938c0-17.597656-14.398437-32-32-32h-202.664062v117.335938h-21.335938v-138.667969h224c29.46875 0 53.335938 23.867188 53.335938 53.332031v341.335938c0 29.464843-23.867188 53.332031-53.335938 53.332031zm0 0"></path><path d="m203.867188 312.535156-15.066407-15.070312 73.464844-73.464844-73.464844-73.464844 15.066407-15.070312 88.53125 88.535156zm0 0"></path><path d="m0 213.332031h277.332031v21.335938h-277.332031zm0 0"></path></svg>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+    <%- include('./reusable/script.ejs') %>
+    <script src="../public/js/conection.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+#create-room-containner{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+    z-index: 999999999999999999999999999999999999;
+    background-color: var(--secundary-color);
+    #create-room-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        #create-room-top-Options{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            gap: 1em;
+            #create-room-top-Options-title{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                #create-room-top-Options-title-span{
+                    color: var(--color-text-primary);
+                    font-size: 3em;
+                    font-family: 'inter';
+                    font-weight: bold;
+                }
+            }
+            .create-room-top-Options-buttons{
+                font-size: 1.3em;
+                color: var(--color-text-primary);
+                font-family: 'ubunto',sans-serif;
+                width: 8em;
+                height: 3em;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                transition: 0.7s;
+                &:hover{
+                    opacity: 0.8;
+                    transform: scale(1.1);
+                    transition: 0.7s;
+                }
+            }
+        }
+        #create-room-mid-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 4em;
+            height: 100%;
+            width: 50vw;
+            max-width: 50em;
+            min-width: 30em;
+            align-items: center;
+            gap: 1em;
+            #create-room-image{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                #create-room-image-title{
+                    color: var(--color-text-primary);
+                    font-size: 2em;
+                    font-family: 'inter',sans-serif;
+                    font-weight: 600;
+                }
+                #create-room-image-content{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 1em;
+                    #create-room-image-preview{
+                        width: 12em;
+                        height: 12em;
+                        border-radius: 20em;
+                        -webkit-user-drag: none;
+                        user-select: none;
+                        cursor: pointer;
+                        background-color: var(--tertiary-lite-color);
+                        
+                    }
+                    #create-room-image-input{
+                        opacity: 0;
+                        position: absolute;
+                        left: 200%;
+                    }
+                }
+            }
+
+
+
+            #create-room-inputs{
+                width: 100%;
+                #create-room-name-content,#create-room-pass-content,#create-room-max-pessoas-content,#create-room-style-music-content{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    margin-top: 1em;
+                }
+                #create-room-duble-inputs-content{
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                   
+                }
+                #space-inpus{
+                    width: 2em;
+                }
+                .create-room-inputs-title{
+                    font-weight: 500;
+                    width: 100%;
+                    margin-bottom: 0.6em;
+                    color: var(--color-text-primary);
+                    font-size: 1.4em;
+                    font-family:'inter',sans-serif;
+                }
+                .create-room-inputs-basic{
+                    width: 100%;
+                    background-color: var(--text-gray-color-primary);
+                    border: 1px solid var(--color-text-primary);
+                    outline: none;
+                    border-radius: 5px;
+                    padding: 0.5em;
+                    /* height: 3em; */
+                    font: 1.3em 'ubunto',sans-serif;
+                }
+            }
+
+
+
+            #create-room-inv-code{
+                
+                #create-room-inv-code-h1{
+                    color: var(--color-text-primary);
+                    font-size: 1.5em;
+                    font-family: 'inter',sans-serif;
+                    font-weight: 600;
+                    
+                }
+                #create-room-inv-code-span{
+                    cursor: pointer;
+                    text-decoration: underline;
+                    color:  rgb(0, 135, 245);
+                }
+            }
+        }
+        
+    }
+}
+#create-room-image-preview-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.6s;
+    border-radius: 20em;
+}
+#create-room-image-preview-content:hover::before{
+    opacity: 1;
+}
+#create-room-image-preview-content::before{
+    content: '';
+    opacity: 0;
+    background-image: url(../assets/svg/icons8-editar.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 99;
+    backdrop-filter: blur(2px);
+    width: 8em;
+    height: 8em;
+    transition: 0.6s;
+    cursor: pointer;
+}
+.create-room-svg{
+    width: 1em;
+    height: 1em;
+}
+
+@media screen and (max-width:550px) {
+    .create-room-top-Options-buttons{
+        font-size: 1.1em !important;
+  
+    }
+    .create-room-inputs-title{
+        font-size: 1.2em !important;
+        
+    }
+    #create-room-mid-content{
+        min-width: 24em !important;
+
+    }
+    #create-room-inv-code-h1{
+        font-size: 1.3em !important;
+    }
+}

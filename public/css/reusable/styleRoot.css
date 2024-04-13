@@ -1,0 +1,126 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    background-color: black;
+} 
+
+*::-webkit-scrollbar-thumb {   
+    background-color: rgb(60, 60, 60); 
+    border-radius: 50px;
+}
+*::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(104, 104, 104);
+}
+
+:root{
+    --primary-color: #0A0A0A;
+    --primary-color-opacity: rgba(10, 10, 10,0.5);
+    --secundary-color: #232323;
+    --tertiary-color: #1E1E1E;
+    --primary-lite-color: #313131;
+    --secundary-lite-color:#464646;
+    --tertiary-lite-color:#444444;
+    --main-color-transparent: rgba(40, 40, 40, 70%);
+    --main-color-puple: #915CDF;
+    --secundary-color-puple: rgb(171, 148, 233);
+    --purpple-strong-color:#7824D5;
+    --purpple-low-color:#C5CDF4;
+    --text-gray-color-primary: #EAEAEA;
+    --text-gray-color-secundary: #B8B8B8;
+    --color-text-primary: #fff;
+    --boder-color-primary: #C0C0C0;
+    --border-color: rgba(113, 113, 113, 50%);
+    --border-color2: rgba(241, 241, 241, 0.918);
+    --color-fill: rgb(255, 255, 255);
+    --color-fill2: rgba(255, 255, 255,0.8);
+} 
+
+[data-theme="light"]{
+    
+}
+
+path:not(.notFill),rect:not(.notFill),g:not(.notFill){
+    fill: var(--color-fill);
+}
+
+body{
+    background-color: var(--secundary-color);
+}
+
+#main-containner{
+    width: calc(100% - 15em);
+    float: right;
+    padding: 1em;
+}
+#body-containner{
+    width: 100%;
+    height: 100%;
+}
+
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+img,br,a{
+    user-select: none;
+}
+ul,ol{
+    list-style: none;
+}
+img{
+    -webkit-user-drag: none;
+}
+
+a{
+    text-decoration: none;
+    color: var(--text-gray-color-primary);
+}
+.material-symbols-outlined{
+    translate: none;
+}
+
+#containner{
+    width: 100vw;
+    height: 100%;
+    display: none;
+}
+
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.flex-containner{
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.spinner {
+    width: 5rem;
+    height: 5rem;
+}
+.spinner.spinner3 {
+    border-top: 4px solid var(--color-text-primary);
+    border-right: 4px solid transparent;
+    border-radius: 50%;
+    -webkit-animation: rotation .8s linear infinite;
+    animation: rotation .8s linear infinite;
+}
+.linha{
+    width: 100%;
+    border-bottom: 1px solid var(--boder-color-primary);
+}

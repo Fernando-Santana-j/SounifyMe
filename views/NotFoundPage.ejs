@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./reusable/head.ejs') %>
+    <title>Página não encontrada</title>
+    <link rel="stylesheet" href="../public/css/NotFoundPage.css">
+</head>
+<body>
+    <div id="body-containner">
+        <%- include('./reusable/reload.ejs') %>
+        <div id="containner">
+            <main id="main-containner">
+                <div id="logo">
+                    <img src="https://res.cloudinary.com/dgcnfudya/image/upload/v1689452893/j4tfvjlyp1ssspbefzg9.png">
+                </div>
+                <div id="texts">
+                    <h1><%= type == 'profile' ? "Perfil bloqueado ou não encontrado!" : "Pagina não Encontrada" %></h1>
+                    <p><%= type == 'profile' ? "O perfil que você esta acessando pode não existir ou o usuário bloqueou a sua visualização ao perfil dele!" : "A pagina que você esta tentando acessar não pode ser encontrada!" %></p>
+                </div>
+                <div id="buttons">
+                    <a href="/home" id="inicio">Início</a>
+                    <a href="/help" id="ajuda">Ajuda</a>
+                </div>
+            </main>
+        </div>
+    </div>
+    <%- include('./reusable/script.ejs') %>
+    <script src="../public/js/notFound.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+#main-containner{
+    width: calc(100% - 15em);
+    float: right;
+    padding: 1em;
+} 

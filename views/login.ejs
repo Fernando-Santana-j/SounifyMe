@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./reusable/head.ejs') %>
+    <link rel="stylesheet" href="../public/css/login.css">
+    <title>Login - SounifyMe</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+    <div id="body-containner">
+        <%- include('./reusable/googlePopup.ejs') %>
+        <%- include('./reusable/reload.ejs') %>
+       <div id="containner" >
+        <div id="reset-pass-containner" style="display: none;">
+            <div id="close-reset-pass"></div>
+            <div id="reset-pass-content">
+                <div id="reset-pass-top-content">
+                    <h1 id="reset-pass-title">Insira o email cadastrado!</h1>
+                    <div id="close-reset-pass-button">
+                        <svg enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path id="path-reset-pass" d="m292.2 256 109.9-109.9c10-10 10-26.2 0-36.2s-26.2-10-36.2 0l-109.9 109.9-109.9-109.9c-10-10-26.2-10-36.2 0s-10 26.2 0 36.2l109.9 109.9-109.9 109.9c-10 10-10 26.2 0 36.2 5 5 11.55 7.5 18.1 7.5s13.1-2.5 18.1-7.5l109.9-109.9 109.9 109.9c5 5 11.55 7.5 18.1 7.5s13.1-2.5 18.1-7.5c10-10 10-26.2 0-36.2z"></path></svg>
+                    </div>
+                </div>
+                <input type="text" id="email-input-reset">
+                <input type="submit" value="Enviar" id="send-email-reset">
+            </div>
+        </div>
+        <main id="main-containner">
+            <div class="containner-size" id="login-img-containner">
+                <img src="https://res.cloudinary.com/dgcnfudya/image/upload/v1690939395/qwuvoc9brcysfjoa9ie7.jpg" alt="">
+            </div>
+            <div class="containner-size" id="login-loader-containner">
+                <div style="display: none;" class="loader-containner">
+                    <div class="spinner spinner3"></div>
+                </div>
+                <div style="display: none;" class="loader-containner">
+                    <div class="spinner spinner3"></div>
+                </div>
+            </div>
+            <section class="containner-size" id="login-containner">
+                <div id="login-content">
+                    <div  id="cadastro-form-containner">
+                        <div style="display: none;" id="cadastro-form-content">
+                            <h1 class="login-title">Cadastro</h1>
+                            <div id="fail-cadastro" class="fail-mensage">
+                                <% if (exist == 'false') { %>
+                                    <%= mensage %>
+                                <% } %>
+                            </div>
+                            <form id="emailFormCadastro" action="/auth/email/cadastro" method="post">
+                                <div class="login-input-containner">
+                                    <label for="email">Username</label>
+                                    <input  type="text" id="userCadastro" maxlength="16" name="username" placeholder="User123">
+                                </div>
+                                <div class="login-input-containner">
+                                    <label for="email">Email</label>
+                                    <input  type="email" id="emailCadastro" name="email" placeholder="example@gmail.com">
+                                </div>
+                                <div class="login-input-containner">
+                                    <label for="senha">Senha</label>
+                                    <div class="password-containner">
+                                        <input minlength="6" type="password" id="senhaCadastro" class="input-password" name="senha" placeholder="**********************">
+                                        <div id="passHideCadastro" class="hide-show-pass">
+                                            <img src="../public/assets/svg/visibility_FILL0_wght400_GRAD0_opsz48.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="termos">
+                                    <label class="labelcheck" for="checkbox1"><input  class="checkbox" id="checkbox1" type="checkbox"  /> Eu concordo com os Termos  do SounifyMe</labe>
+                                </div>
+                                <div id="button-containner">
+                                    <div class="button-content">
+                                        <input  type="submit" value="Cadastrar-se">
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="login-account-containner">
+                                <span>Já tem uma conta?</span>
+                                <a id="button-login">Logar-se</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="login-form-containner">
+                        <div id="login-form-content">
+                            <h1 class="login-title">Login</h1>
+                            <div id="fail-login" class="fail-mensage">
+                                <% if (exist == 'true'|| pass == 'invalid') { %>
+                                    <%= mensage %>
+                                <% } %>
+                            </div>
+                            <form id="emailFormLogin" action="/auth/email/login" method="post">
+                                <div class="login-input-containner">
+                                    <label for="email">Email</label>
+                                    <input  type="email" id="emailLogin" name="email" placeholder="example@gmail.com">
+                                </div>
+                                <div class="login-input-containner">
+                                    <label for="senha">Senha</label>
+                                    <div class="password-containner">
+                                        <input minlength="6" type="password" id="senhaLogin" class="input-password" name="senha" placeholder="**********************">
+                                        <div id="passHideLogin" class="hide-show-pass">
+                                            <img src="../public/assets/svg/visibility_FILL0_wght400_GRAD0_opsz48.svg" alt="">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            
+                                <div id="forgot-password-containner">
+                                    <a href="#" id="forgot-password-button">Esqueceu sua senha?</a>
+                                </div>
+                                <div id="button-and-remember-containner">
+                                    <div class="button-content">
+                                        <input type="submit" value="Entrar">
+                                    </div>
+                                    <div id="remember-content">
+                                        <div id="check-content" ><div id="check-circle"></div></div>
+                                        <span>Lembre de mim</span>
+                                        <input type="checkbox" name="remember" checked hidden id="remember-input">
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="create-account-containner">
+                                <span>Não tem uma conta?</span>
+                                <a id="button-cadastro">Cadastre-se</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+       </div>
+    </div>
+    <!-- <div><form action="/auth" id="formignore" method="post"><input type="text" id="userAutenticate" name="user" hidden><input type="text" name="redirect" id="userRedirect" hidden></form></div> -->
+    <%- include('./reusable/script.ejs') %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" ></script>
+    <script type="module" src="../public/js/login.js"></script>
+</body>
+</html>

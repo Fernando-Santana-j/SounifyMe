@@ -1,0 +1,561 @@
+html,body,#main-containner,#containner,#body-containner{
+    height: 100%;
+}
+#main-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#top-title-containner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    #top-title-content{
+        text-align: center;
+    }
+    #top-title-content h1{
+       color: var(--color-text-primary);
+       font: 600 1.2em 'Inter', sans-serif;
+    }
+}
+
+#server-list-containner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #server-list-content{
+        overflow-x: hidden;
+        display: flex;
+        width: 80%;
+        height: 80%;
+        background-color: var(--primary-color-opacity);
+        border-radius: 10px;
+        #server-list-left-content{
+            transition: 0.8s;
+            width: 80%;
+            height: 100%;
+            #server-list-left-search-containner{
+                width: 100%;
+                height: 4em;
+                display: flex;
+                justify-content: center;
+                #server-list-left-search-content{
+                    margin-top: 1em;
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    #find-room-input{
+                        background-color: var(--primary-lite-color);
+                        border: none;
+                        outline: none;
+                        height: auto;
+                        width: 60%;
+                        white-space: nowrap; 
+                        padding-left: 0.8em;
+                        color: var(--color-text-primary);
+                        border-radius: 20em 0 0 20em;
+                        font: 600 1em 'Ubuntu', sans-serif;
+                    }
+                    #find-room-icon{
+                        cursor: text;
+                        background-color: var(--primary-lite-color);
+                        border-left: 1px solid var(--border-color);
+                        padding: 0.6em 1em 0.6em 1em;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 0 20em 20em 0;
+                        #find-room-icon-svg{
+                            width: 2em;
+                        }
+                    }
+                }
+            }
+            #server-list-buttons-containner{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                #server-list-buttons{
+                    margin-top: 0.6em;
+                    width: 90%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .server-list-buttons-class{
+                        width: 10em;
+                        border: none;
+                        outline: none;
+                        color: var(--color-text-primary);
+                        font: 600 1em 'inter',sans-serif;
+                        padding: 0.8em;
+                        border-radius: 20em;
+                        text-align: center;
+                        cursor: pointer;
+                    }
+                    #direct-button{
+                        background-color: var(--purpple-strong-color);
+                        margin-right: 1em;
+                    }
+                    #create-room-button{
+                        background-color: #226998;
+                        margin-right: 1em;
+                    }
+                    #random-room-button{
+                        background-color: #F39C12;
+                        margin-right: 1em;
+                    }
+                    #refresh-button{
+                        background-color: #209615;
+                    }
+                }
+            }
+            #server-list{
+                width: 100%;
+                height: calc(100% - 10em);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 2em;
+                #server-list-row-containner{
+                    width: 90%;
+                    height: 100%;
+                    background-color: var(--primary-lite-color);
+                    border-radius: 10px;
+                    padding: 1em;
+                    #server-list-row{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        overflow: auto;
+                        .server-list-col{
+                            cursor: pointer;
+                            width: 100%;
+                            height: 5em;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 1em;
+                            gap: 2em;
+                            &:not(:first-child){
+                                margin-top: 1em;
+                                
+                            }
+                            .server-list-col-img-text-containner{
+                                display: flex;
+                                margin-left: 1em;
+                                flex-grow: 1;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                
+                                .server-list-img {
+                                    height: 4em;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                                .server-list-img img{
+                                    width: 4em;
+                                    height: 4em;
+                                    transition: 0.7s;
+                                    border-radius: 20em;
+                                    background-color: var(--border-color2);
+                            
+                                    
+                                }
+                                .server-list-texts{
+                                    display: flex;
+                                    flex-direction: column;
+                                    margin-left: 0.8em;
+                                    /* max-width: 8em; */
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    flex-grow: 1;
+                                    height: 4em;
+                                    justify-content: center;
+                                    .server-list-name{
+                                        margin-bottom: 0.2em;
+                                      .server-list-name-h1{
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis; 
+                                        color: var(--color-text-primary);
+                                        font-weight: 600;
+                                        font-size: 1.4em;
+                                        font-family: 'inter',sans-serif;
+                                      }  
+                                      
+                                    }
+                                    .server-list-musicAc{
+                                        .server-list-musicAc-span{
+                                            display: flex;
+                                            color: var(--text-gray-color-secundary);
+                                            font: 400 0.6em 'inter',sans-serif;
+                                            .server-list-musicAc-p{
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis; 
+                                            }
+                                        }
+                                    }
+                                }
+                               
+                            }
+                            .server-list-style-containner{
+                                width: 10em; 
+                                text-align: center;
+                                padding: 0.4em;
+                                border-radius: 10px;
+                                flex-wrap: nowrap;
+                                display: flex;
+                                align-items: center;
+                                flex-direction: column;
+                                background-color: var(--tertiary-color);
+                                .server-list-style-title{
+                                    color: var(--color-text-primary);
+                                    font: 600 1.2em 'inter',sans-serif;
+                                    margin-bottom: 0.2em;
+                                }  
+                                .server-list-style-p{
+                                    color: var(--text-gray-color-secundary);
+                                    font: 400 0.8em 'inter',sans-serif;
+                                    display: block;
+                                    width: 9em;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis; 
+                                } 
+                            }
+                            .server-list-status{
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                .number-people-containner{
+                                    .number-people-p{
+                                        text-wrap: nowrap;
+                                        color: var(--color-text-primary);
+                                        font: 500 1em 'inter',sans-serif;
+                                    }
+                                }
+                                .islocked-containner{
+                                    margin-top: 0.6em;
+                                    width: 1.5em;
+                                }
+                            }
+                            .enter-room{
+                                z-index: 9999;
+                                cursor: pointer;
+                                width: 2em;
+                                margin-right: 1em;
+                            }
+                            .enter-room svg{
+                                width: 2em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #server-list-right-containner{
+            
+            height: 100%;
+            position: relative;
+            left: 0%;
+            #server-list-right-content{
+                width: 100%;
+                height: 100%;
+                border-radius: 4em 10px 10px 4em;
+                padding: 1em;
+                background-color: var(--primary-lite-color);
+                display: flex;
+                flex-direction: column;
+                left: 0%;
+                position: relative;
+                animation: roomAnim 0.8s;
+                #server-list-right-top-infos{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    margin-bottom: 1em;
+                    margin-top: 1em;
+                    #room-right-pic{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        #room-right-pic-img{
+                            width: 4em;
+                            height: 4em;
+                            border-radius: 20em;
+                        }
+                    }
+                    #room-right-title{
+                        margin-top: 0.6em;
+                        text-align: center;
+                        #room-right-title-h1{
+                            color: var(--color-text-primary);
+                            font: 600 1.4em 'inter',sans-serif;
+                        }
+                    }
+                    
+                }
+                #server-list-right-music-infos{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    margin-top: 1em;
+                    margin-bottom: 1em;
+                    #room-right-tocando{
+                        color: var(--color-text-primary);
+                        font: 800 1.8em 'inter',sans-serif;
+                    }
+                    #room-right-music-pic{
+                        text-align: center;
+                        margin-top: 1em;
+                        #room-right-music-pic-img{
+                            width: 5em;
+                            height: 5em;
+                            border-radius: 10px;
+                        }
+                    }
+                    #room-right-music-name{
+                        text-align: center;
+                        margin-top: 0.6em;
+                        #room-right-music-name-h1{
+                            color: var(--color-text-primary);
+                            font: 600 1.2em 'inter',sans-serif;
+                        }
+                    }
+                    #room-right-music-banda{
+                        text-align: center;
+                        margin-top: 0.2em;
+                        #room-right-music-banda-p{
+                            color: var(--text-gray-color-secundary);
+                            font: 400 1em 'inter',sans-serif;
+                        }
+                    }
+                }
+                #server-list-right-others-infos{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    text-align: center;
+                    margin-top: 1em;
+                    margin-bottom: 1em;
+                    #server-list-right-others-infos-islocked{
+                        #server-list-right-others-infos-islocked-h1{
+                            color: var(--color-text-primary);
+                            font: 600 1.4em 'inter',sans-serif;
+                        }
+                    }
+                    #server-list-right-others-infos-estilos{
+                        margin-top: 1.8vh;
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        #server-list-right-others-infos-estilos-h1{
+                            color: var(--color-text-primary);
+                            font: 600 1.2em 'inter',sans-serif;
+                        }
+                    }
+                    #server-list-right-others-infos-pessoas{
+                        margin-top: 1.8vh;
+                        #server-list-right-others-infos-pessoas-h1{
+                            color: var(--color-text-primary);
+                            font: 600 1em 'inter',sans-serif;
+                        }
+                    }
+                }
+                #server-list-right-button-containner{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    #server-list-right-button-content{
+                        max-width: 12em;
+                        max-height: 4em;
+                        min-width: 6em;
+                        min-height: 1em;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 20em;
+                        background-color: rgb(4, 177, 4);
+                        display: flex;
+                        padding: 0.6em;
+                        justify-content: space-between;
+                        align-items: center;
+                        cursor: pointer;
+                        #server-list-right-button-span{
+                            flex-grow: 1;
+                           
+                            color: var(--color-text-primary);
+                            font: 600 1.2em 'inter',sans-serif;
+                        }
+                        #server-list-right-button-svg{
+                            width: 2em;
+                        }
+                    }
+                }
+                #server-list-right-music-infos,#server-list-right-top-infos,#server-list-right-others-infos,#server-list-right-button{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+#direct-connection-popup-containner{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #direct-connection-popup-close{
+        cursor: pointer;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0,0.4);
+        z-index: 1;
+    }
+    #direct-connection-popup-content{
+        z-index: 99999;
+        display: flex;
+        width: 22em;
+        border-radius: 10px;
+        height: 16em;
+        padding: 1em;
+        background-color: var(--secundary-color);
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: ; */
+        #direct-connection-top{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            margin-bottom: 1em;
+            #direct-connection-h1{
+                width: 100%;
+                color: var(--color-text-primary);
+                font: 600 1.2em 'inter',sans-serif;
+            }
+            #close-popup-button-direct{
+                width: 3em;
+                height: 3em;
+                cursor: pointer;
+            }
+        }
+        #direct-connection-input{
+            border-radius: 10px;
+            border: none;
+            width: 70%;
+            padding: 1em;
+        }
+        #direct-connection-button{
+            text-align: center;
+            margin-top: 1em;
+            display: flex;
+            justify-content: center;
+            border: 1px solid var(--primary-color);
+            max-width: 10em;
+            max-height: 6em;
+            min-width: 6em;
+            min-height: 1em; 
+            border-radius: 20em;
+            background-color: rgb(4, 177, 4);
+            display: flex;
+            padding: 1em;
+            cursor: pointer;
+            color: var(--color-text-primary);
+            font: 600 1em 'inter',sans-serif;
+        }
+    }
+}
+
+#server-list,#server-list-row-containner,#server-list-row{
+    transition: 0.8s;
+}
+
+@keyframes roomAnim {
+    0%{
+        left: 100%;
+    }
+}
+
+@media screen and (max-width: 1290px) {
+    #server-list-right-others-infos-estilos{
+        display: none !important;
+    }
+}
+@media screen and (max-width: 1190px) {
+
+    #server-list-right-containner{
+        width: 0% !important;
+        left: 200% !important;
+    }
+    #room-right-music-name-h1{
+        font-size: 1em !important;
+
+    }
+    #room-right-title-h1,#server-list-right-others-infos-islocked-h1{
+        font-size: 1.2em !important;
+    }
+    #room-right-tocando{
+        font-size: 1.3em !important;
+    }
+    #room-right-music-banda-p,#server-list-right-others-infos-pessoas-h1{
+        font-size: 0.8em !important;
+    }
+    .server-list-style-containner{
+        display: none !important;
+    }
+}
+@media screen and (max-width: 860px) {
+    #random-room-button{
+        display: none;
+    }
+    #server-list-buttons{
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+    .server-list-img img{
+
+        width: 3em !important;
+        height: 3em !important;
+        transition: 0.7s;
+    }
+    .server-list-name-h1{
+        font-size: 1.2em !important;
+    }
+    .server-list-status{
+        display: none !important;
+    }
+}
+
+@media screen and (max-width:500px) {
+    #server-list-content{
+        width: 100% !important;
+    }
+}

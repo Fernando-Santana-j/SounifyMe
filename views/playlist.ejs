@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./reusable/head.ejs') %>
+    <title></title>
+    <link rel="stylesheet" href="../public/css/playlist.css">
+</head>
+<body>
+    <div id="body-containner">
+        <%- include('./reusable/reload.ejs') %>
+        <div id="containner">
+            <%- include('./reusable/header.ejs',{banda:user.banda, index:null,perfil:{nome:user.displayName,profileImg:user.profilePic == null ? "../public/img/logo_icon.png" : user.profilePic} }) %>
+            <%- include('./reusable/userOptions.ejs') %>
+            <main id="main-containner">
+                <div id="main-content">
+                    <div id="playlist-conf-containner">
+                        <div id="playlist-conf-content">
+                            <div id="playlist-conf-img">
+                                <img src="https://res.cloudinary.com/dgcnfudya/image/upload/v1699892735/fi3qe2pdlwwv24zpauu5.png">
+                            </div>
+                            <div id="playlist-conf-details">
+                                <div id="playlist-conf-name">
+                                    <div id="playlist-conf-info">Playlist</div>
+                                    <div id="playlist-conf-displayname">Playlist Name</div>
+                                </div>
+                                <div id="playlist-conf-others">
+                                    <div id="playlist-conf-others-link">
+                                        <img src="https://res.cloudinary.com/dgcnfudya/image/upload/v1699892735/fi3qe2pdlwwv24zpauu5.png">
+                                        <div id="user-profile-playlist">KIDSgraca</div> • 
+                                        <div id="likes-playlist">1 like</div> • 
+                                        <div id="songs-count-playlist">12 songs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="playlist-data-containner">
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <%- include('./reusable/script.ejs') %>
+    <script src="../public/js/playlist.js"></script>
+</body>
+</html>
