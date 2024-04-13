@@ -225,7 +225,7 @@ try {
     
             await tracks.forEach(async(track,index) => {
                 
-                const API_KEY = 'AIzaSyBH040ebD313-xHBvtDfLF1XOWZBF_HT1o';
+                const API_KEY = config.googleYoutubeToken
     
                 const searchUrl = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${encodeURIComponent(track.track.name)}&type=video`;
     
