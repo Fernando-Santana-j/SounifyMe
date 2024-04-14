@@ -10,7 +10,8 @@ try {
         isAuthenticated: async (req, res, next)=> {
             const idToken = req.session.accesstoken;
             if (!idToken) {
-                res.redirect('/login?redirect='+req.originalUrl);
+                res.redirect(`/logout?redirect=${req.originalUrl}`)
+                
             } else {
                 await admin.auth().verifyIdToken(idToken).then(function(decodedToken) {
                     if (!req.session.uid) {
@@ -20,7 +21,7 @@ try {
                     next();
                 }).catch(function(error) {
                     console.error('Erro ao verificar o token de autenticação:', error);
-                    res.redirect('/login');
+                    res.redirect('/logout');
                 });
             }
         },

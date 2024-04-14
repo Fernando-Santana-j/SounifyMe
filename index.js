@@ -930,7 +930,7 @@ app.get('/logout',(req,res)=>{
             }
         })
     }
-    res.render('logout')
+    res.render('logout',{redirect:req.query.redirect ? req.query.redirect : ''})
 })
 
 

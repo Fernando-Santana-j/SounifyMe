@@ -10,7 +10,8 @@ await $.post('/firebaseApp', (data)=>{
 const firebaseApp = initializeApp(firebaseDATA);
 const auth = getAuth();
 
+let redirect = document.getElementById('redirect').textContent
 
 signOut(auth).then(() => {
-    location.href = '/login'
+    location.href = `/login?redirect=${redirect}`
 })
