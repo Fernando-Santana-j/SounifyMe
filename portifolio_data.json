@@ -1,0 +1,19 @@
+{
+    "visible": true,
+    "name": "SounifyMe",
+    "description": "Primeiro grande projeto pessoal, idealizado e desenvolvido integralmente por mim. A plataforma foi criada com o objetivo de oferecer um espaço de música compartilhada, permitindo que múltiplos usuários interagissem simultaneamente em tempo real.",
+    "type":"company",
+    "status": "incomplete",
+    "deploy": "",
+    "technologies": [
+        "EJS",
+        "CSS",
+        "JavaScript",
+        "NodeJS",
+        "Socket.io",
+        "Firebase"
+    ],
+    "pinned": false,
+    "banner":"https://res.cloudinary.com/dmfgy0ccd/image/upload/v1772529308/readmeBanner_c2fdba.png",
+    "complete": false
+}
